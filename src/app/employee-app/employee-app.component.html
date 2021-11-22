@@ -1,0 +1,101 @@
+<header id="main-header" class="py-2 bg-Secondary text-white">
+    <div class="container">
+        <div class="row">
+            <div style="text-align: center;">
+                <h1><i class="fa fa-gear"></i>Employee</h1>
+            </div>   
+        </div> 
+    </div>
+</header>
+
+<section id="action" class="py-4 mb-4 bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <a href="#" class="btn btn-primary" data-toggle="modal" routerLink="addSkill">
+                    <i class="fa fa-plus"></i> Add Skill
+                </a>
+                
+            </div>
+            <div class="col-md-3">
+                <a href="#" class="btn btn-success" data-toggle="modal" routerLink="addCert">
+                    <i class="fa fa-plus"></i> Add Certificate
+                </a>
+                
+            </div>
+            
+        </div>
+        
+    </div>
+    
+</section>
+
+<section id="employees">    
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-9">
+           <div class="card">
+               <div class="card-header">
+                   <h4>All Employees</h4>
+               </div>
+               <table class="table table-striped">
+        <thead class="thead-inverse">
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                    <th>Skills</th>   
+                    <th>Years of Experience</th>
+                    <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let employee of employees; let Index = index">
+                <td scope="row">{{Index + 1}}</td>
+                <td>{{employee.name}}</td>
+                <td><span *ngFor="let skill of employee.skills">
+                    {{skill.skillName}} </span></td>
+                <td>{{employee.yearsOfExperience}}</td>  
+                <td> <a (click)="viewEmployee(employee.email)" data-toggle="modal" data-target="#viewModal"
+                    class="btn btn-primary text-white">Details</a></td>
+            </tr>
+        </tbody>
+               </table>
+           </div>
+            </div>
+                </div>
+            </div>
+    </section>
+
+    <div class="modal fade" id="viewModal">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header bg-primary text-white">
+                    <h3 class="modal-title">Details of {{seeEmployee.name}}</h3>
+                    <button class="close" data-dismiss="modal"><span>&times;</span></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <label><strong>Email: </strong></label> {{seeEmployee.email}}
+                        </div>
+                        <div class="form-group">
+                            <label><strong>Experience- </strong></label> {{seeEmployee.yearsOfExperience}} year.
+                        </div>
+                        <div class="form-group">
+                            <label><strong> Employee Skills: </strong></label><span *ngFor="let skill of seeEmployee.skills">
+                               {{skill.skillName}} </span>
+                        </div>
+                        <div class="form-group">
+                            <label><strong>About- </strong></label>
+                            <p style="display: contents;">{{seeEmployee.bio}}</p>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary closeButton" 
+                    data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>  
+    </div>

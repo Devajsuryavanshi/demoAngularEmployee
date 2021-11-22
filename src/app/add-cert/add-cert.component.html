@@ -1,0 +1,48 @@
+
+   <div class="container">
+    <div class="row">
+       <div class="col-md-6 mx-auto">
+           <div class="card">
+               <div class="card-header">
+                   <h4>
+                       Add Cert
+                   </h4>
+               </div>
+               <form (ngSubmit)="submitCertificate()">
+                <div class="form-group">
+                    <label for="title">Certificate Name</label>
+                    <input type="text" name="certificateName"
+                    id="certificateName" [(ngModel)]="certificate.certificateName" class="form-control"
+                    required>
+                </div>
+
+                 <div class="form-group">
+                    <label for="body">Certificate Description</label>
+                    <textarea name="certificateDescription" 
+                    id="certificateDescription" [(ngModel)]="certificate.certificateDescription"
+                     class="form-control" required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="body">Issuing Authority</label>
+                    <input name="authority" type="text"
+                    id="authority" [(ngModel)]="certificate.authority"
+                     class="form-control" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="body">Certificate Licence Number</label>
+                    <input name="certificateNumber"  type="text"
+                    id="certificateNumber" [(ngModel)]="certificate.certificateNumber"
+                     class="form-control" required>
+                </div>
+
+                <button class="btn btn-primary" type="submit">Submit</button>
+                <button class="btn btn-secondary clearButtonCert"
+                style="margin: 10px;"
+                type="reset">Clear</button>
+            </form>
+            </div>
+        </div>
+    </div>
+</div>
